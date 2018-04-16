@@ -12,7 +12,7 @@ final class ServiceManager {
     
     static let shared = ServiceManager()
     
-    func request(url: String, method: RequestMethod, parameters: [String : Any]?, success: @escaping (AnyObject) -> Void, failure: @escaping (ServiceError) -> Void) {
+    func request(url: String, method: RequestMethod, parameters: [String : Any]?, success: @escaping (Data) -> Void, failure: @escaping (ServiceError) -> Void) {
         
         guard let _url = URL(string: url) else {
             failure(ServiceError.invalidUrl)
@@ -49,8 +49,8 @@ final class ServiceManager {
                     return
                 }
                 
-                let jsonBody = String(data: data, encoding: .utf8)!
-                success(jsonBody as AnyObject)
+                //let jsonBody = String(data: data, encoding: .utf8)!
+                success(data)
             }
         }
         task.resume()
