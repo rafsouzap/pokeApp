@@ -18,7 +18,6 @@ struct PokemoonRoot: Codable {
 struct Pokemon: Codable {
     
     let name: String
-    let sprite: String
     
     private enum CodingKeys: String, CodingKey {
         case name
@@ -26,8 +25,6 @@ struct Pokemon: Codable {
     
     init(from decoder: Decoder) throws {
         let values = try decoder.container(keyedBy: CodingKeys.self)
-        
         self.name = try values.decode(String.self, forKey: .name)
-        self.sprite = AppEnvironment.baseSpriteURL.value.replacingOccurrences(of: "[POKEMON_NAME]", with: self.name)
     }
 }

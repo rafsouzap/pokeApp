@@ -19,7 +19,15 @@ extension UIColor {
     }
     
     static func navigationBarTintColor() -> UIColor {
-        return self.init(hexadecimal: 0xE04043)
+        return self.init(hexadecimal: 0x233D4D)
+    }
+    
+    static func titleColor() -> UIColor {
+        return self.init(hexadecimal: 0x233D4D)
+    }
+    
+    static func contentColor() -> UIColor {
+        return self.init(hexadecimal: 0xA1C181)
     }
     
     convenience init(red: Int, green: Int, blue: Int) {

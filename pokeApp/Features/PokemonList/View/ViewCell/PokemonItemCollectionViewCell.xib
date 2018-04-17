@@ -19,35 +19,52 @@
                 <rect key="frame" x="0.0" y="0.0" width="96" height="120"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4E4-4b-31u">
-                        <rect key="frame" x="0.0" y="0.0" width="96" height="96"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H8D-uQ-uM3">
+                        <rect key="frame" x="0.0" y="0.0" width="96" height="120"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="pokeball_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="4E4-4b-31u">
+                                <rect key="frame" x="5" y="5" width="86" height="94"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="94" id="uif-pm-6lj"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charmeleon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1N-XL-wEv">
+                                <rect key="frame" x="0.0" y="99.5" width="96" height="20.5"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="12"/>
+                                <color key="textColor" red="0.31372549019607843" green="0.31372549019607843" blue="0.31372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="96" id="FQJ-Fe-30Z"/>
+                            <constraint firstAttribute="trailing" secondItem="4E4-4b-31u" secondAttribute="trailing" constant="5" id="3zE-KX-frV"/>
+                            <constraint firstAttribute="bottom" secondItem="W1N-XL-wEv" secondAttribute="bottom" id="9iZ-ET-fg6"/>
+                            <constraint firstItem="W1N-XL-wEv" firstAttribute="leading" secondItem="H8D-uQ-uM3" secondAttribute="leading" id="FkI-Kq-iZ5"/>
+                            <constraint firstItem="W1N-XL-wEv" firstAttribute="top" secondItem="4E4-4b-31u" secondAttribute="bottom" id="XBY-cI-cwH"/>
+                            <constraint firstAttribute="trailing" secondItem="W1N-XL-wEv" secondAttribute="trailing" id="lB9-m9-TZZ"/>
+                            <constraint firstItem="4E4-4b-31u" firstAttribute="top" secondItem="H8D-uQ-uM3" secondAttribute="top" constant="5" id="pWa-x3-uVG"/>
+                            <constraint firstItem="4E4-4b-31u" firstAttribute="leading" secondItem="H8D-uQ-uM3" secondAttribute="leading" constant="5" id="uCP-pW-5TX"/>
                         </constraints>
-                    </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Charmeleon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W1N-XL-wEv">
-                        <rect key="frame" x="0.0" y="96" width="96" height="24"/>
-                        <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBold" family="Helvetica Neue" pointSize="12"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    </view>
                 </subviews>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="W1N-XL-wEv" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="09s-sh-U4H"/>
-                <constraint firstAttribute="bottom" secondItem="W1N-XL-wEv" secondAttribute="bottom" id="4G2-W1-JUY"/>
-                <constraint firstAttribute="trailing" secondItem="4E4-4b-31u" secondAttribute="trailing" id="N1N-e8-w9d"/>
-                <constraint firstItem="4E4-4b-31u" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="UAW-WA-Gaq"/>
-                <constraint firstItem="4E4-4b-31u" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="ZNh-sv-mGm"/>
-                <constraint firstAttribute="trailing" secondItem="W1N-XL-wEv" secondAttribute="trailing" id="kNw-fj-AbH"/>
-                <constraint firstItem="W1N-XL-wEv" firstAttribute="top" secondItem="4E4-4b-31u" secondAttribute="bottom" id="sKy-R0-ccw"/>
+                <constraint firstAttribute="trailing" secondItem="H8D-uQ-uM3" secondAttribute="trailing" id="QkU-3l-gA2"/>
+                <constraint firstItem="H8D-uQ-uM3" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Vof-qp-sjZ"/>
+                <constraint firstItem="H8D-uQ-uM3" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="lfh-1h-bFf"/>
+                <constraint firstAttribute="bottom" secondItem="H8D-uQ-uM3" secondAttribute="bottom" id="urm-aJ-sJ7"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
+                <outlet property="containerView" destination="H8D-uQ-uM3" id="OmM-R3-O22"/>
                 <outlet property="imageView" destination="4E4-4b-31u" id="168-9P-aI5"/>
                 <outlet property="nameLabel" destination="W1N-XL-wEv" id="LXY-4Z-18s"/>
             </connections>
             <point key="canvasLocation" x="-231" y="69"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <image name="pokeball_placeholder" width="128" height="128"/>
+    </resources>
 </document>

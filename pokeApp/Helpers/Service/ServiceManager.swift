@@ -12,19 +12,29 @@ final class ServiceManager {
     
     static let shared = ServiceManager()
     
-    func request(url: String, method: RequestMethod, parameters: [String : Any]?, success: @escaping (Data) -> Void, failure: @escaping (ServiceError) -> Void) {
+    func request(url: String, method: RequestMethod, parameters: [String : Any]? = nil, queryParameters: [String : Any]? = nil,
+                 success: @escaping (Data) -> Void, failure: @escaping (ServiceError) -> Void) {
         
-        guard let _url = URL(string: url) else {
+        guard let _ = URL(string: url) else {
             failure(ServiceError.invalidUrl)
             return
         }
         
-        var request = URLRequest(url: _url)
+        var urlComponents = URLComponents(string: url)!
+        
+        if let queryParameters = queryParameters {
+            urlComponents.queryItems = queryParameters.map { (arg) -> URLQueryItem in
+                let (key, value) = arg
+                return URLQueryItem(name: key, value: "\(value)")
+            }
+        }
+
+        var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = method.value
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        if let jsonBody = parameters {
-            if let httpBody = try? JSONSerialization.data(withJSONObject: jsonBody) {
+        if let bodyParameters = parameters {
+            if let httpBody = try? JSONSerialization.data(withJSONObject: bodyParameters) {
                 request.httpBody = httpBody
             }
         }

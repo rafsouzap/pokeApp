@@ -10,6 +10,7 @@ import UIKit
 
 class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtension {
 
+    @IBOutlet fileprivate weak var containerView: UIView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     
@@ -17,7 +18,12 @@ class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtension {
         super.awakeFromNib()
     }
     
-    func fillOutlets(with text: String) {
-        self.nameLabel.text = text
+    func fillOutlets(with pokemon: PokemonList) {
+        self.nameLabel.textColor = UIColor.titleColor()
+        self.nameLabel.text = pokemon.name
+
+        ImageLoader.shared.imageForUrl(urlString: pokemon.imageUrl, completion: { image, url in
+            self.imageView.image = image
+        })
     }
 }

@@ -10,7 +10,7 @@ final class PokemonListPresenter {
     
     fileprivate unowned let view: PokemonListViewProtocol
     fileprivate let service: PokemonService
-    fileprivate(set) var pokemons: [Pokemon] = []
+    fileprivate(set) var pokemons: [PokemonList] = []
     
     init(view: PokemonListViewProtocol) {
         self.view = view
@@ -22,16 +22,16 @@ final class PokemonListPresenter {
 
 extension PokemonListPresenter {
     
-    func loadPokemons() {
+    func loadPokemons(limit: Int = 20, offSet: Int = 0) {
         
         self.view.showLoading()
-        self.service.getPokemons(success: { result in
-            print("aqui estou")
+        self.service.getPokemons(limit: limit, offSet: offSet, success: { result in
+            self.pokemons.append(contentsOf: result.compactMap { PokemonList(with: $0) })
+            self.view.reloadCollectionView()
             self.view.hideLoading()
         }, failure: { error in
             self.requestError(errorDescription: error.description)
         })
-        
     }
 }
 
@@ -44,4 +44,3 @@ extension PokemonListPresenter {
         self.view.showAlertError(with: "Erro", message: errorDescription, buttonTitle: "OK")
     }
 }
-

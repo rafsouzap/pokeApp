@@ -17,6 +17,7 @@ final class PokemonListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         self.title = "Pokémon"
         self.initialize()
         
@@ -35,13 +36,37 @@ final class PokemonListViewController: UIViewController {
 extension PokemonListViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 14
+        return self.presenter.pokemons.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonItemCollectionViewCell.id, for: indexPath) as! PokemonItemCollectionViewCell
-        cell.fillOutlets(with: "Teste \(indexPath.row)")
+        
+        let pokemon = self.presenter.pokemons[indexPath.row]
+        cell.fillOutlets(with: pokemon)
+        
         return cell
+    }
+}
+
+// MARK: UICollectionViewDelegate
+
+extension PokemonListViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        
+        let countPokemons = self.presenter.pokemons.count
+        
+        if countPokemons - 1 == indexPath.row
+            && countPokemons % 20 == 0 {
+            self.presenter.loadPokemons(limit: 20, offSet: countPokemons)
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let controller = PokemonDetailViewController.storyboardViewController(with: "Main")
+        controller.selectedPokemon = self.presenter.pokemons[indexPath.row]
+        self.navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -62,11 +87,15 @@ extension PokemonListViewController: PokemonListViewProtocol {
     }
     
     func reloadCollectionView() {
-        
+        UIView.transition(with: self.collectionView, duration: 0.35, options: .transitionCrossDissolve, animations: {
+            self.collectionView.reloadData()
+        })
     }
     
     func showAlertError(with title: String, message: String, buttonTitle: String) {
-        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: buttonTitle, style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 

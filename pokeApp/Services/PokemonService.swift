@@ -20,7 +20,7 @@ final class PokemonService {
         let parameters = [PokemonService.kLimitParameter: limit,
                           PokemonService.kOffsetParameter: offSet] as [String : Any]
 
-        ServiceManager.shared.request(url: serviceUrl, method: .get, parameters: parameters, success: { result in
+        ServiceManager.shared.request(url: serviceUrl, method: .get, queryParameters: parameters, success: { result in
             let response = try! JSONDecoder().decode(PokemoonRoot.self, from: result)
             success(response.results)
         }, failure: { fail in
