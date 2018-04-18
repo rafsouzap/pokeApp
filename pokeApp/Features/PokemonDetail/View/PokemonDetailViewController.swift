@@ -11,11 +11,11 @@ import SVProgressHUD
 
 class PokemonDetailViewController: UIViewController {
 
-    @IBOutlet fileprivate weak var containerView: UIView!
     @IBOutlet fileprivate weak var headerContainerView: UIView!
     @IBOutlet fileprivate weak var imageContainerView: UIView!
     @IBOutlet fileprivate weak var imageView: UIImageView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
+    @IBOutlet fileprivate weak var tableView: UITableView!
     
     fileprivate var presenter: PokemonDetailPresenter!
     var selectedPokemon: PokemonList?
@@ -25,14 +25,19 @@ class PokemonDetailViewController: UIViewController {
         
         self.title = "Pokémon"
         self.initialize()
+        
+        guard let pokemon = self.selectedPokemon else {
+            fatalError("selectedPokemon can't be nil")
+        }
+        self.presenter.loadDetail(with: pokemon.name)
+        
+        self.tableView.register(PokemonDetailTableViewCell.cellNib, forCellReuseIdentifier: PokemonDetailTableViewCell.id)
+        self.tableView.sectionFooterHeight = 5
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         self.setupLayout()
-        
-        //XPTO XPTO XPTO XPTO
-        self.nameLabel.text = self.selectedPokemon?.name
-        
-        ImageLoader.shared.imageForUrl(urlString: self.selectedPokemon!.imageUrl, completion: { image, url in
-            self.imageView.image = image
-        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -40,9 +45,63 @@ class PokemonDetailViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
+extension PokemonDetailViewController: UITableViewDataSource {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: PokemonDetailTableViewCell.id, for: indexPath) as! PokemonDetailTableViewCell
+        return cell
+    }
+}
+
+// MARK: - UITableViewDelegate
+
+extension PokemonDetailViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let contentView = UIView(frame: CGRect(x: 10, y: 0, width: self.view.bounds.width - 20, height: 30))
+        
+        let separator = UIView(frame: CGRect(x: 10, y: contentView.bounds.height - 4, width: contentView.bounds.width, height: 2))
+        separator.backgroundColor = UIColor.titleColor()
+        contentView.addSubview(separator)
+        
+        let titleLabel = UILabel(frame: CGRect(x: 10, y: 0, width: contentView.bounds.width, height: contentView.bounds.height))
+        titleLabel.font = UIFont.systemFont(ofSize: 12, weight: .semibold)
+        titleLabel.textColor = UIColor.titleColor()
+        
+        switch section {
+        case 0: titleLabel.text = "TYPES"
+        case 1: titleLabel.text = "ABILITIES"
+        case 2: titleLabel.text = "MOVES"
+        default: break
+        }
+        
+        contentView.addSubview(titleLabel)
+        return contentView
+    }
+}
+
 // MARK: - ViewProtocol
 
 extension PokemonDetailViewController: PokemonDetailViewProtocol {
+    
+    func showDetail(with pokemon: PokemonDetail) {
+        
+    }
     
     func showLoading() {
         SVProgressHUD.setDefaultStyle(.custom)
@@ -68,10 +127,21 @@ extension PokemonDetailViewController: PokemonDetailViewProtocol {
 extension PokemonDetailViewController {
     
     fileprivate func initialize() {
+        
+        guard let pokemon = self.selectedPokemon else {
+            fatalError("selectedPokemon can't be nil")
+        }
+        self.nameLabel.text = pokemon.name
+        
+        ImageLoader.shared.imageForUrl(urlString: pokemon.imageUrl, completion: { image, url in
+            self.imageView.image = image
+        })
+        
         self.presenter = PokemonDetailPresenter(view: self)
     }
     
     fileprivate func setupLayout() {
+        self.view.backgroundColor = UIColor.viewBackgroundColor()
         self.headerContainerView.backgroundColor = UIColor.contentColor()
     }
     

@@ -27,4 +27,16 @@ final class PokemonService {
             failure(ServiceError(code: fail.code))
         })
     }
+    
+    func getPokemonDetail(with name: String, success: @escaping (PokemonDetail) -> Void, failure: @escaping (_ error: ServiceError) -> Void) {
+        
+        let serviceUrl = AppEnvironment.baseServerAPI.value.appending("pokemon/\(name)")
+        
+        ServiceManager.shared.request(url: serviceUrl, method: .get, success: { result in
+            let response = try! JSONDecoder().decode(PokemonDetail.self, from: result)
+            success(response)
+        }, failure: { fail in
+            failure(ServiceError(code: fail.code))
+        })
+    }
 }

@@ -30,6 +30,10 @@ extension UIColor {
         return self.init(hexadecimal: 0xA1C181)
     }
     
+    static func detailTitleColor() -> UIColor {
+        return self.init(hexadecimal: 0xC94707)
+    }
+    
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red value")
         assert(green >= 0 && green <= 255, "Invalid green value")

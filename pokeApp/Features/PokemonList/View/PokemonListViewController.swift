@@ -44,7 +44,7 @@ extension PokemonListViewController: UICollectionViewDataSource {
         
         let pokemon = self.presenter.pokemons[indexPath.row]
         cell.fillOutlets(with: pokemon)
-        
+
         return cell
     }
 }

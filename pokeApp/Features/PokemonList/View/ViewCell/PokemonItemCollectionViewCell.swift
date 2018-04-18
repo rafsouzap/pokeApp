@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtension {
+final class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtension {
 
     @IBOutlet fileprivate weak var containerView: UIView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!

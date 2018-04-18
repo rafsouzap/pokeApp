@@ -21,17 +21,19 @@ final class PokemonDetailPresenter {
 
 extension PokemonDetailPresenter {
     
-//    func loadPokemons(limit: Int = 20, offSet: Int = 0) {
-//        
-//        self.view.showLoading()
-//        self.service.getPokemons(limit: limit, offSet: offSet, success: { result in
-//            self.pokemons.append(contentsOf: result.compactMap { PokemonList(with: $0) })
-//            self.view.reloadCollectionView()
-//            self.view.hideLoading()
-//        }, failure: { error in
-//            self.requestError(errorDescription: error.description)
-//        })
-//    }
+    func loadDetail(with name: String) {
+        
+        let lowerName = name.lowercased()
+        
+        self.view.showLoading()
+        self.service.getPokemonDetail(with: lowerName, success: { result in
+            self.view.showDetail(with: result)
+            self.view.hideLoading()
+        }, failure: { error in
+            self.requestError(errorDescription: error.description)
+        })
+        
+    }
 }
 
 // MARK: - Private methods
@@ -43,4 +45,3 @@ extension PokemonDetailPresenter {
         self.view.showAlertError(with: "Erro", message: errorDescription, buttonTitle: "OK")
     }
 }
-
