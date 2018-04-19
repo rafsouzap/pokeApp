@@ -31,6 +31,11 @@
 		8DC2C18820882915002FF867 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18720882915002FF867 /* Ability.swift */; };
 		8DC2C18A20882A8B002FF867 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18920882A8B002FF867 /* Move.swift */; };
 		8DC2C18D208849F3002FF867 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18C208849F3002FF867 /* DefaultsManager.swift */; };
+		8DC2C19320885489002FF867 /* FavoriteList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C19220885489002FF867 /* FavoriteList.swift */; };
+		8DC2C195208854C0002FF867 /* FavoriteListViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C194208854C0002FF867 /* FavoriteListViewProtocol.swift */; };
+		8DC2C197208854CA002FF867 /* FavoriteListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C196208854CA002FF867 /* FavoriteListPresenter.swift */; };
+		8DC2C1992088554D002FF867 /* FavoriteListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C1982088554D002FF867 /* FavoriteListTableViewController.swift */; };
+		8DC2C19C208857AC002FF867 /* FavoriteItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C19B208857AC002FF867 /* FavoriteItemTableViewCell.swift */; };
 		8DCD02FF207EF9080029F61F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCD02FE207EF9080029F61F /* AppDelegate.swift */; };
 		8DCD0304207EF9080029F61F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD0302207EF9080029F61F /* Main.storyboard */; };
 		8DCD0306207EF90A0029F61F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD0305207EF90A0029F61F /* Assets.xcassets */; };
@@ -89,6 +94,11 @@
 		8DC2C18720882915002FF867 /* Ability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
 		8DC2C18920882A8B002FF867 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
 		8DC2C18C208849F3002FF867 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
+		8DC2C19220885489002FF867 /* FavoriteList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteList.swift; sourceTree = "<group>"; };
+		8DC2C194208854C0002FF867 /* FavoriteListViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListViewProtocol.swift; sourceTree = "<group>"; };
+		8DC2C196208854CA002FF867 /* FavoriteListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListPresenter.swift; sourceTree = "<group>"; };
+		8DC2C1982088554D002FF867 /* FavoriteListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListTableViewController.swift; sourceTree = "<group>"; };
+		8DC2C19B208857AC002FF867 /* FavoriteItemTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteItemTableViewCell.swift; sourceTree = "<group>"; };
 		8DCD02FB207EF9080029F61F /* pokeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCD02FE207EF9080029F61F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DCD0303207EF9080029F61F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -187,7 +197,6 @@
 		8D2EF1C1208676BD00260B70 /* PokemonDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8D2EF1C420867C0800260B70 /* Model */,
 				8D2EF1C320867C0100260B70 /* View */,
 				8D2EF1C220867BFC00260B70 /* Presenter */,
 			);
@@ -212,13 +221,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		8D2EF1C420867C0800260B70 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		8D2EF1D22086DE5E00260B70 /* ViewCell */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +238,50 @@
 				8DC2C18C208849F3002FF867 /* DefaultsManager.swift */,
 			);
 			path = DefaultsManager;
+			sourceTree = "<group>";
+		};
+		8DC2C18E20885459002FF867 /* FavoriteList */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C1912088547D002FF867 /* Model */,
+				8DC2C1902088546D002FF867 /* View */,
+				8DC2C18F20885465002FF867 /* Presenter */,
+			);
+			path = FavoriteList;
+			sourceTree = "<group>";
+		};
+		8DC2C18F20885465002FF867 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C196208854CA002FF867 /* FavoriteListPresenter.swift */,
+				8DC2C194208854C0002FF867 /* FavoriteListViewProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8DC2C1902088546D002FF867 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C19A20885795002FF867 /* ViewCell */,
+				8DC2C1982088554D002FF867 /* FavoriteListTableViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8DC2C1912088547D002FF867 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C19220885489002FF867 /* FavoriteList.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8DC2C19A20885795002FF867 /* ViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C19B208857AC002FF867 /* FavoriteItemTableViewCell.swift */,
+			);
+			path = ViewCell;
 			sourceTree = "<group>";
 		};
 		8DCD02F2207EF9080029F61F = {
@@ -326,6 +372,7 @@
 		8DCD033A208291B70029F61F /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				8DC2C18E20885459002FF867 /* FavoriteList */,
 				8D2EF1C1208676BD00260B70 /* PokemonDetail */,
 				8DCD03422082AAE90029F61F /* PokemonList */,
 				8DCD033B208291BE0029F61F /* Navigation */,
@@ -565,16 +612,20 @@
 				8D2EF1CD2086CDFB00260B70 /* PokemonDetail.swift in Sources */,
 				8DC2C18820882915002FF867 /* Ability.swift in Sources */,
 				8D2EF1AB2083DFF400260B70 /* ViewCellExtension.swift in Sources */,
+				8DC2C195208854C0002FF867 /* FavoriteListViewProtocol.swift in Sources */,
 				8D2EF1D12086D6DE00260B70 /* Type.swift in Sources */,
 				8DCD0331207EFA320029F61F /* ServiceError.swift in Sources */,
 				8DCD03472082AB660029F61F /* PokemonListViewController.swift in Sources */,
+				8DC2C1992088554D002FF867 /* FavoriteListTableViewController.swift in Sources */,
 				8D2EF1BC208409EE00260B70 /* Pokemon.swift in Sources */,
+				8DC2C197208854CA002FF867 /* FavoriteListPresenter.swift in Sources */,
 				8DC2C1812088172A002FF867 /* PokemonItemTagCollectionViewCell.swift in Sources */,
 				8D2EF1D72086F04200260B70 /* PokemonDetailTableViewCell.swift in Sources */,
 				8D232B222082F5C700C26F12 /* NSObjectExtension.swift in Sources */,
 				8D2EF1B12083F52E00260B70 /* AppEnvironment.swift in Sources */,
 				8D2EF1CB2086876900260B70 /* PokemonDetailViewProtocol.swift in Sources */,
 				8D2EF1AF2083F4BB00260B70 /* PokemonService.swift in Sources */,
+				8DC2C19320885489002FF867 /* FavoriteList.swift in Sources */,
 				8D2EF1A92083D0ED00260B70 /* PokemonCollectionFlowLayout.swift in Sources */,
 				8D2EF1C92086875B00260B70 /* PokemonDetailPresenter.swift in Sources */,
 				8DCD033F2082A63B0029F61F /* UIColorExtension.swift in Sources */,
@@ -584,6 +635,7 @@
 				8D232B282083960300C26F12 /* PokemonItemCollectionViewCell.swift in Sources */,
 				8D2EF1C020864ACD00260B70 /* PokemonList.swift in Sources */,
 				8DCD0333207EFA540029F61F /* RequestMethod.swift in Sources */,
+				8DC2C19C208857AC002FF867 /* FavoriteItemTableViewCell.swift in Sources */,
 				8D2EF1BE208426F200260B70 /* ImageLoader.swift in Sources */,
 				8D2EF1B82084084C00260B70 /* PokemonListPresenter.swift in Sources */,
 				8D2EF1C620867EE500260B70 /* PokemonDetailViewController.swift in Sources */,

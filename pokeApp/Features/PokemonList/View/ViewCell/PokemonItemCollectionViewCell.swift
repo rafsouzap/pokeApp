@@ -17,6 +17,12 @@ final class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtensi
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        self.clipsToBounds = false
+        self.layer.cornerRadius = 10.0
+        self.layer.shadowOpacity = 0.35
+        self.layer.shadowColor = UIColor.lightGray.cgColor
+        self.layer.shadowRadius = 3.0
+        self.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
     }
     
     func fillOutlets(with pokemon: PokemonList) {

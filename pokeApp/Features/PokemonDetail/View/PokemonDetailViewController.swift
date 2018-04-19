@@ -28,7 +28,7 @@ class PokemonDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Pokémon"
+        self.title = "About Pokémon"
         self.initialize()
         
         guard let pokemon = self.selectedPokemon else {

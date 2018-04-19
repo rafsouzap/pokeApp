@@ -18,8 +18,9 @@ final class PokemonListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Pokémon"
+        self.title = "Pokémons"
         self.initialize()
+        self.setupLayout()
         
         self.collectionView.register(PokemonItemCollectionViewCell.cellNib, forCellWithReuseIdentifier: PokemonItemCollectionViewCell.id)
         self.presenter.loadPokemons()
@@ -108,6 +109,16 @@ extension PokemonListViewController {
     
     fileprivate func initialize() {
         self.presenter = PokemonListPresenter(view: self)
+    }
+    
+    fileprivate func setupLayout() {
+        let leftBarButton = UIBarButtonItem(title: "Favorites", style: UIBarButtonItemStyle.done, target: self, action: #selector(self.showFavorites(_:)))
+        self.navigationItem.rightBarButtonItem = leftBarButton
+    }
+
+    @objc fileprivate func showFavorites(_ sender: UIBarButtonItem!) {
+        let controller = FavoriteListTableViewController.storyboardViewController(with: "Main")
+        self.navigationController?.pushViewController(controller, animated: true)
     }
     
     @objc fileprivate func notificationReload(notification: NSNotification) {

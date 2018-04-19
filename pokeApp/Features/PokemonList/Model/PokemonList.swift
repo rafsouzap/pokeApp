@@ -17,4 +17,9 @@ struct PokemonList {
         self.name = pokemon.name.capitalized
         self.imageUrl = AppEnvironment.baseSpriteURL.value.replacingOccurrences(of: "[POKEMON_NAME]", with: pokemon.name)
     }
+    
+    init(with name: String) {
+        self.name = name.capitalized
+        self.imageUrl = AppEnvironment.baseSpriteURL.value.replacingOccurrences(of: "[POKEMON_NAME]", with: name.lowercased())
+    }
 }

@@ -31,10 +31,12 @@ final class NavigationViewController: UINavigationController {
                               NSAttributedStringKey.foregroundColor: UIColor.navigationTintColor()]
         
         self.navigationBar.titleTextAttributes = textAttributes
+
         
-        // Hide text on backButton
-        UIBarButtonItem.appearance(whenContainedInInstancesOf: [NavigationViewController.self]).setTitleTextAttributes([NSAttributedStringKey.foregroundColor: UIColor.clear,
-                                                                                                                        NSAttributedStringKey.font: UIFont.systemFont(ofSize: 0.1)],
-                                                                                                                       for: .normal)
+        let buttonAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white,
+                                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14, weight: .medium)]
+        
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [NavigationViewController.self]).setTitleTextAttributes(buttonAttributes, for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [NavigationViewController.self]).setTitleTextAttributes(buttonAttributes, for: .highlighted)
     }
 }

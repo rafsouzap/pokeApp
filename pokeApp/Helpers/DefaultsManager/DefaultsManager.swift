@@ -29,6 +29,11 @@ struct DefaultsManager {
         return favorites.contains(name)
     }
     
+    static func retrieveFavorites() -> [String] {
+        let favorites = self.userDefaults.object(forKey: AppEnvironment.favoriteKey.value) as? [String] ?? [String]()
+        return favorites
+    }
+    
     fileprivate static func saveValue(to key: String, value: Any) {
         userDefaults.set(value, forKey: key)
     }
