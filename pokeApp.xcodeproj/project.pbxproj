@@ -25,7 +25,12 @@
 		8D2EF1CD2086CDFB00260B70 /* PokemonDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2EF1CC2086CDFB00260B70 /* PokemonDetail.swift */; };
 		8D2EF1D12086D6DE00260B70 /* Type.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2EF1D02086D6DE00260B70 /* Type.swift */; };
 		8D2EF1D72086F04200260B70 /* PokemonDetailTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D2EF1D52086F04200260B70 /* PokemonDetailTableViewCell.swift */; };
-		8D2EF1D82086F04200260B70 /* PokemonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D2EF1D62086F04200260B70 /* PokemonDetailTableViewCell.xib */; };
+		8DC2C1812088172A002FF867 /* PokemonItemTagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C17F2088172A002FF867 /* PokemonItemTagCollectionViewCell.swift */; };
+		8DC2C185208821AC002FF867 /* PokemonDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC2C183208821AC002FF867 /* PokemonDetailTableViewCell.xib */; };
+		8DC2C186208821AC002FF867 /* PokemonItemTagCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8DC2C184208821AC002FF867 /* PokemonItemTagCollectionViewCell.xib */; };
+		8DC2C18820882915002FF867 /* Ability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18720882915002FF867 /* Ability.swift */; };
+		8DC2C18A20882A8B002FF867 /* Move.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18920882A8B002FF867 /* Move.swift */; };
+		8DC2C18D208849F3002FF867 /* DefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DC2C18C208849F3002FF867 /* DefaultsManager.swift */; };
 		8DCD02FF207EF9080029F61F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DCD02FE207EF9080029F61F /* AppDelegate.swift */; };
 		8DCD0304207EF9080029F61F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD0302207EF9080029F61F /* Main.storyboard */; };
 		8DCD0306207EF90A0029F61F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DCD0305207EF90A0029F61F /* Assets.xcassets */; };
@@ -78,7 +83,12 @@
 		8D2EF1CC2086CDFB00260B70 /* PokemonDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetail.swift; sourceTree = "<group>"; };
 		8D2EF1D02086D6DE00260B70 /* Type.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Type.swift; sourceTree = "<group>"; };
 		8D2EF1D52086F04200260B70 /* PokemonDetailTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonDetailTableViewCell.swift; sourceTree = "<group>"; };
-		8D2EF1D62086F04200260B70 /* PokemonDetailTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonDetailTableViewCell.xib; sourceTree = "<group>"; };
+		8DC2C17F2088172A002FF867 /* PokemonItemTagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonItemTagCollectionViewCell.swift; sourceTree = "<group>"; };
+		8DC2C183208821AC002FF867 /* PokemonDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PokemonDetailTableViewCell.xib; sourceTree = "<group>"; };
+		8DC2C184208821AC002FF867 /* PokemonItemTagCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PokemonItemTagCollectionViewCell.xib; sourceTree = "<group>"; };
+		8DC2C18720882915002FF867 /* Ability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ability.swift; sourceTree = "<group>"; };
+		8DC2C18920882A8B002FF867 /* Move.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Move.swift; sourceTree = "<group>"; };
+		8DC2C18C208849F3002FF867 /* DefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultsManager.swift; sourceTree = "<group>"; };
 		8DCD02FB207EF9080029F61F /* pokeApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = pokeApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DCD02FE207EF9080029F61F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DCD0303207EF9080029F61F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -159,6 +169,8 @@
 				8D2EF1BB208409EE00260B70 /* Pokemon.swift */,
 				8D2EF1CC2086CDFB00260B70 /* PokemonDetail.swift */,
 				8D2EF1D02086D6DE00260B70 /* Type.swift */,
+				8DC2C18720882915002FF867 /* Ability.swift */,
+				8DC2C18920882A8B002FF867 /* Move.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -211,9 +223,19 @@
 			isa = PBXGroup;
 			children = (
 				8D2EF1D52086F04200260B70 /* PokemonDetailTableViewCell.swift */,
-				8D2EF1D62086F04200260B70 /* PokemonDetailTableViewCell.xib */,
+				8DC2C183208821AC002FF867 /* PokemonDetailTableViewCell.xib */,
+				8DC2C17F2088172A002FF867 /* PokemonItemTagCollectionViewCell.swift */,
+				8DC2C184208821AC002FF867 /* PokemonItemTagCollectionViewCell.xib */,
 			);
 			path = ViewCell;
+			sourceTree = "<group>";
+		};
+		8DC2C18B208849E5002FF867 /* DefaultsManager */ = {
+			isa = PBXGroup;
+			children = (
+				8DC2C18C208849F3002FF867 /* DefaultsManager.swift */,
+			);
+			path = DefaultsManager;
 			sourceTree = "<group>";
 		};
 		8DCD02F2207EF9080029F61F = {
@@ -261,6 +283,7 @@
 		8DCD032C207EF9840029F61F /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8DC2C18B208849E5002FF867 /* DefaultsManager */,
 				8DCD0334207EFB590029F61F /* Extensions */,
 				8DCD032D207EF98E0029F61F /* Service */,
 				8D2EF1BD208426F200260B70 /* ImageLoader.swift */,
@@ -468,11 +491,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC2C186208821AC002FF867 /* PokemonItemTagCollectionViewCell.xib in Resources */,
 				8DCD0309207EF90A0029F61F /* LaunchScreen.storyboard in Resources */,
 				8DCD0306207EF90A0029F61F /* Assets.xcassets in Resources */,
 				8D232B292083960300C26F12 /* PokemonItemCollectionViewCell.xib in Resources */,
 				8DCD0304207EF9080029F61F /* Main.storyboard in Resources */,
-				8D2EF1D82086F04200260B70 /* PokemonDetailTableViewCell.xib in Resources */,
+				8DC2C185208821AC002FF867 /* PokemonDetailTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,12 +560,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8DC2C18A20882A8B002FF867 /* Move.swift in Sources */,
+				8DC2C18D208849F3002FF867 /* DefaultsManager.swift in Sources */,
 				8D2EF1CD2086CDFB00260B70 /* PokemonDetail.swift in Sources */,
+				8DC2C18820882915002FF867 /* Ability.swift in Sources */,
 				8D2EF1AB2083DFF400260B70 /* ViewCellExtension.swift in Sources */,
 				8D2EF1D12086D6DE00260B70 /* Type.swift in Sources */,
 				8DCD0331207EFA320029F61F /* ServiceError.swift in Sources */,
 				8DCD03472082AB660029F61F /* PokemonListViewController.swift in Sources */,
 				8D2EF1BC208409EE00260B70 /* Pokemon.swift in Sources */,
+				8DC2C1812088172A002FF867 /* PokemonItemTagCollectionViewCell.swift in Sources */,
 				8D2EF1D72086F04200260B70 /* PokemonDetailTableViewCell.swift in Sources */,
 				8D232B222082F5C700C26F12 /* NSObjectExtension.swift in Sources */,
 				8D2EF1B12083F52E00260B70 /* AppEnvironment.swift in Sources */,
@@ -734,13 +762,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4D2B6N62V4;
+				DEVELOPMENT_TEAM = LB8UPYUFVF;
 				INFOPLIST_FILE = "$(SRCROOT)/pokeApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pokemonApps;
+				PRODUCT_BUNDLE_IDENTIFIER = pokemonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -753,13 +781,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 4D2B6N62V4;
+				DEVELOPMENT_TEAM = LB8UPYUFVF;
 				INFOPLIST_FILE = "$(SRCROOT)/pokeApp/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pokemonApps;
+				PRODUCT_BUNDLE_IDENTIFIER = pokemonApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

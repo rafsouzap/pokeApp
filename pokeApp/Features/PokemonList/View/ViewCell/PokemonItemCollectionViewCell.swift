@@ -13,6 +13,7 @@ final class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtensi
     @IBOutlet fileprivate weak var containerView: UIView!
     @IBOutlet fileprivate weak var nameLabel: UILabel!
     @IBOutlet fileprivate weak var imageView: UIImageView!
+    @IBOutlet fileprivate weak var favoriteImageView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -25,5 +26,7 @@ final class PokemonItemCollectionViewCell: UICollectionViewCell, ViewCellExtensi
         ImageLoader.shared.imageForUrl(urlString: pokemon.imageUrl, completion: { image, url in
             self.imageView.image = image
         })
+        
+        self.favoriteImageView.isHidden = !DefaultsManager.isFavorite(name: pokemon.name)
     }
 }

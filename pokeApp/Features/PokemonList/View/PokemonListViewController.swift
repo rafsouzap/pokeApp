@@ -23,6 +23,9 @@ final class PokemonListViewController: UIViewController {
         
         self.collectionView.register(PokemonItemCollectionViewCell.cellNib, forCellWithReuseIdentifier: PokemonItemCollectionViewCell.id)
         self.presenter.loadPokemons()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.notificationReload(notification:)),
+                                               name: NSNotification.Name(rawValue: AppEnvironment.notificationName.value), object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -105,5 +108,9 @@ extension PokemonListViewController {
     
     fileprivate func initialize() {
         self.presenter = PokemonListPresenter(view: self)
+    }
+    
+    @objc fileprivate func notificationReload(notification: NSNotification) {
+        self.collectionView.reloadData()
     }
 }

@@ -6,10 +6,13 @@
 //  Copyright © 2018 Rafael de Paula. All rights reserved.
 //
 
+import Foundation
+
 final class PokemonDetailPresenter {
     
     fileprivate unowned let view: PokemonDetailViewProtocol
     fileprivate let service: PokemonService
+    fileprivate(set) var pokemonDetail: PokemonDetail?
     
     init(view: PokemonDetailViewProtocol) {
         self.view = view
@@ -27,12 +30,23 @@ extension PokemonDetailPresenter {
         
         self.view.showLoading()
         self.service.getPokemonDetail(with: lowerName, success: { result in
-            self.view.showDetail(with: result)
+            self.pokemonDetail = result
+            self.view.showDetail()
             self.view.hideLoading()
         }, failure: { error in
             self.requestError(errorDescription: error.description)
         })
         
+    }
+    
+    func saveFavorite(with pokemonName: String) {
+        DefaultsManager.saveFavorite(name: pokemonName)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: AppEnvironment.notificationName.value), object: nil)
+        self.isFavorite(with: pokemonName)
+    }
+    
+    func isFavorite(with pokemonName: String) {
+        self.view.changeFavoriteLayout(isFavorite: DefaultsManager.isFavorite(name: pokemonName))
     }
 }
 

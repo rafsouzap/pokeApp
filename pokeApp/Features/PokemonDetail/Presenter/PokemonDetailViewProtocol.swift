@@ -7,7 +7,8 @@
 //
 
 protocol PokemonDetailViewProtocol: class {
-    func showDetail(with pokemon: PokemonDetail)
+    func showDetail()
+    func changeFavoriteLayout(isFavorite: Bool)
     func showLoading()
     func hideLoading()
     func showAlertError(with title: String, message: String, buttonTitle: String)

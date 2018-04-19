@@ -16,6 +16,8 @@ struct PokemonDetail: Codable {
     let height: Int
     let baseExperience: Int
     let types: [Type]
+    let abilities: [Ability]
+    let moves: [Move]
     
     private enum CodingKeys: String, CodingKey {
         case id
@@ -24,6 +26,8 @@ struct PokemonDetail: Codable {
         case height
         case baseExperience = "base_experience"
         case types
+        case abilities
+        case moves
     }
     
     init(from decoder: Decoder) throws {
@@ -34,5 +38,7 @@ struct PokemonDetail: Codable {
         self.height = try values.decode(Int.self, forKey: .height)
         self.baseExperience = try values.decode(Int.self, forKey: .baseExperience)
         self.types = try values.decode([Type].self, forKey: .types)
+        self.abilities = try values.decode([Ability].self, forKey: .abilities)
+        self.moves = try values.decode([Move].self, forKey: .moves)
     }
 }

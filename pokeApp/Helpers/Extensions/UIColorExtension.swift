@@ -30,8 +30,12 @@ extension UIColor {
         return self.init(hexadecimal: 0xA1C181)
     }
     
-    static func detailTitleColor() -> UIColor {
-        return self.init(hexadecimal: 0xC94707)
+    static func tagBackgroundColor() -> UIColor {
+        return self.init(hexadecimal: 0xE19A77)
+    }
+    
+    static func favoriteTintColor() -> UIColor {
+        return self.init(hexadecimal: 0xA53B06)
     }
     
     convenience init(red: Int, green: Int, blue: Int) {
